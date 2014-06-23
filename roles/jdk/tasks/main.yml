@@ -1,0 +1,18 @@
+---
+
+- name: Add Oracle's JDK repository
+  apt_repository: repo=ppa:webupd8team/java state=present
+  sudo: True
+
+- name: Accept Oracle's JDK license before installing
+  shell: "echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections"
+  sudo: True
+
+- name: Install JDK8
+  apt: name=oracle-java8-installer state=present
+  sudo: True
+
+- name: Setup JDK8 as default  
+  shell: "update-java-alternatives --set java-8-oracle"
+  sudo: True
+

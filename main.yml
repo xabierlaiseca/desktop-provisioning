@@ -5,6 +5,7 @@
   hosts: default
   roles:
     - common
+    - jdk
     - eclipse
   tags:
     - eclipse
