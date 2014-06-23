@@ -1,0 +1,11 @@
+---
+
+
+- name: Install Eclipse
+  hosts: default
+  roles:
+    - common
+    - eclipse
+  tags:
+    - eclipse
+    - ide

@@ -1,0 +1,22 @@
+---
+
+- name: Download Eclipse32
+  get_url: 
+    url=http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/technology/epp/downloads/release/kepler/SR2/eclipse-jee-kepler-SR2-linux-gtk.tar.gz
+    dest={{ apps_dir }}/eclipse.tar.gz
+    mode=0660
+  when: "ansible_architecture == 'x86'"
+
+- name: Download Eclipse64
+  get_url:
+    url=http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/technology/epp/downloads/release/kepler/SR2/eclipse-jee-kepler-SR2-linux-gtk-x86_64.tar.gz
+    dest={{ apps_dir }}/eclipse.tar.gz
+    mode=0660
+  when: "ansible_architecture == 'x86_64'"
+
+- name: Untar Eclipse
+  command: tar -xzf {{ apps_dir }}/eclipse.tar.gz -C {{ apps_dir }}  creates={{ apps_dir }}/eclipse
+
+- name: Install STS plugin
+  action: script install-from-marketplace.sh "-u 'http://marketplace.eclipse.org/content/spring-tool-suite-sts-eclipse-kepler-43' -p '{{ apps_dir }}/eclipse'"
+

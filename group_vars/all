@@ -1,0 +1,5 @@
+---
+
+root_dir: "{{ ansible_env.HOME  }}"
+apps_dir: "{{ root_dir }}/apps"
+
