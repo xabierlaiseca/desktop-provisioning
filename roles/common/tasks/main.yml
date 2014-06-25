@@ -3,7 +3,15 @@
 - name: Check apps directory
   file: path={{ apps_dir }} state=directory
 
+- name: Update apt package list
+  apt: update_cache=yes
+  sudo: True
+
+- name: install vim
+  apt: name=vim state=latest
+  sudo: True
+
 - name: install libxml2-utils
-  apt: name=libxml2-utils state=present update_cache=yes
-  sudo: yes
+  apt: name=libxml2-utils state=latest
+  sudo: True
 
