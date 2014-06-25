@@ -4,9 +4,5 @@
 - name: Install Eclipse
   hosts: default
   roles:
-    - common
-    - jdk
-    - eclipse
-  tags:
-    - eclipse
-    - ide
+    - java-dev
+
